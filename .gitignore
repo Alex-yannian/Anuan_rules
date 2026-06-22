@@ -1,0 +1,17 @@
+# Local secrets and runtime files
+*.secret.yaml
+*.local.yaml
+*Private*.yaml
+*private*.yaml
+providers/
+ui/
+cache.db
+rules/
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
