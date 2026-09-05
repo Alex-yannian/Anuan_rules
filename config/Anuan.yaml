@@ -1,0 +1,1135 @@
+# Anuan OpenClash / Mihomo public configuration
+# Repository: https://github.com/Alex-yannian/Anuan_rules
+# Updated: 2026-06-21
+# Public template: replace CHANGE_ME locally; never commit real credentials.
+# 用途：路由器 OpenClash / Mihomo 规则。由第一份路由器规则为底稿，融合第二份电脑客户端细分类规则后改写。
+# 核心：国外服务优先、国内规则后置；游戏联机/下载直连，游戏平台网页/社区/好友代理；IPv6 默认关闭；移除路由器无效的 PROCESS-NAME 规则。
+# 注意：proxy-providers.subscription.url 仍需替换为你的真实 Clash 订阅链接。
+mixed-port: 7890
+redir-port: 7892
+tproxy-port: 7893
+allow-lan: true
+bind-address: '*'
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: 'off'
+external-controller: 0.0.0.0:9090
+secret: CHANGE_ME
+profile:
+  store-selected: true
+  store-fake-ip: true
+geodata-mode: true
+geox-url:
+  geoip: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/geo/geoip.dat
+  geosite: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/geo/geosite.dat
+  mmdb: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/geo/geoip.metadb
+  asn: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/geo/GeoLite2-ASN.mmdb
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+      - 443
+      - 8443
+    QUIC:
+      ports:
+      - 443
+      - 8443
+  skip-domain:
+  - Mijia Cloud
+  - +.push.apple.com
+dns:
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  use-hosts: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  respect-rules: true
+  fake-ip-filter:
+  - rule-set:Direct
+  - rule-set:Private
+  - rule-set:China
+  - rule-set:fakeip_filter
+  - '*.lan'
+  - '*.local'
+  - '*.localhost'
+  - '*.localdomain'
+  - router.asus.com
+  - +.miwifi.com
+  - localhost.ptlogin2.qq.com
+  - '*.msftconnecttest.com'
+  - '*.msftncsi.com'
+  - time.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - time.*.apple.com
+  - time-ios.apple.com
+  - '*.ntp.org.cn'
+  - '*.openwrt.pool.ntp.org'
+  - '*.pool.ntp.org'
+  - ntp.*.com
+  - '*.stun.*.*'
+  - '*.stun.*.*.*'
+  - stun.*.*.*
+  - stun.*.*
+  - '*.n.n.srv.nintendo.net'
+  - '*.srv.nintendo.net'
+  - '*.xboxlive.com'
+  - xbox.*.microsoft.com
+  - '*.battlenet.com.cn'
+  - '*.wargaming.net'
+  - '*.wowsgame.cn'
+  - '*.wggames.cn'
+  - music.163.com
+  - '*.music.163.com'
+  - '*.126.net'
+  - '*.xiami.com'
+  - '*.music.migu.cn'
+  - +.pub.3gppnetwork.org
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
+  default-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  proxy-server-nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  direct-nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fallback:
+  - https://1.1.1.1/dns-query
+  - https://8.8.8.8/dns-query
+  - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+    - gfw
+    ipcidr:
+    - 240.0.0.0/4
+proxy-providers:
+  subscription:
+    type: http
+    url: PUT_YOUR_CLASH_SUBSCRIPTION_URL_HERE
+    interval: 86400
+    path: ./proxy_providers/subscription.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: https://www.gstatic.com/generate_204
+proxy-groups:
+- name: 直接连接
+  type: select
+  proxies:
+  - DIRECT
+- name: 节点选择
+  type: select
+  proxies:
+  - 自动选择
+  - 故障转移
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 韩国策略
+  - 美国策略
+  - 欧盟策略
+  - 冷门自选
+  - 全球手动
+  - 直接连接
+  use:
+  - subscription
+- name: 自动选择
+  type: url-test
+  use:
+  - subscription
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 故障转移
+  type: fallback
+  proxies:
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 韩国策略
+  - 美国策略
+  - 欧盟策略
+  - 冷门自选
+  - 全球手动
+  - 直接连接
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 香港策略
+  type: select
+  proxies:
+  - 香港自动
+  - 香港均衡-散列
+  - 香港均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 台湾策略
+  type: select
+  proxies:
+  - 台湾自动
+  - 台湾均衡-散列
+  - 台湾均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 狮城策略
+  type: select
+  proxies:
+  - 狮城自动
+  - 狮城均衡-散列
+  - 狮城均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 日本策略
+  type: select
+  proxies:
+  - 日本自动
+  - 日本均衡-散列
+  - 日本均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 韩国策略
+  type: select
+  proxies:
+  - 韩国自动
+  - 韩国均衡-散列
+  - 韩国均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 美国策略
+  type: select
+  proxies:
+  - 美国自动
+  - 美国均衡-散列
+  - 美国均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 欧盟策略
+  type: select
+  proxies:
+  - 欧盟自动
+  - 欧盟均衡-散列
+  - 欧盟均衡-轮询
+  - 全球手动
+  - 直接连接
+- name: 香港自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(港|🇭🇰|HK|Hong|HKG)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 香港均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(港|🇭🇰|HK|Hong|HKG)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 香港均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(港|🇭🇰|HK|Hong|HKG)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 台湾自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(台|🇹🇼|TW|Tai|TPE|TSA|KHH)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 台湾均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(台|🇹🇼|TW|Tai|TPE|TSA|KHH)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 台湾均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(台|🇹🇼|TW|Tai|TPE|TSA|KHH)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 狮城自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(坡|新加坡|🇸🇬|SG|Sing|SIN|XSP)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 狮城均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(坡|新加坡|🇸🇬|SG|Sing|SIN|XSP)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 狮城均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(坡|新加坡|🇸🇬|SG|Sing|SIN|XSP)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 日本自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 日本均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 日本均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 韩国自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(韩|韓|🇰🇷|KR|KOR|Korea|South)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 韩国均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(韩|韓|🇰🇷|KR|KOR|Korea|South)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 韩国均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(韩|韓|🇰🇷|KR|KOR|Korea|South)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 美国自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 美国均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 美国均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 欧盟自动
+  type: url-test
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(英|法|德|荷|意|西|波|瑞|奥|比|🇬🇧|🇫🇷|🇩🇪|🇳🇱|🇮🇹|🇪🇸|GB|UK|FR|DE|NL|IT|ES|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|LHR|LGW)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+- name: 欧盟均衡-散列
+  type: load-balance
+  strategy: consistent-hashing
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(英|法|德|荷|意|西|波|瑞|奥|比|🇬🇧|🇫🇷|🇩🇪|🇳🇱|🇮🇹|🇪🇸|GB|UK|FR|DE|NL|IT|ES|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|LHR|LGW)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 欧盟均衡-轮询
+  type: load-balance
+  strategy: round-robin
+  use:
+  - subscription
+  filter: ^(?=.*((?i)(英|法|德|荷|意|西|波|瑞|奥|比|🇬🇧|🇫🇷|🇩🇪|🇳🇱|🇮🇹|🇪🇸|GB|UK|FR|DE|NL|IT|ES|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|LHR|LGW)))(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|5x)).*$
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+- name: 冷门自选
+  type: select
+  use:
+  - subscription
+  filter: ^(?!.*(DIRECT|直接连接|美|港|坡|新|台|日|韩|英|法|德|荷|意|西|🇭🇰|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇺🇸|🇬🇧|HK|TW|SG|JP|KR|US|GB|UK|FR|DE|NL|IT|ES|HKG|TPE|SIN|NRT|HND|LAX|SFO|IAD|LHR))
+- name: 全球手动
+  type: select
+  use:
+  - subscription
+  filter: ^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)).*$
+- name: AI服务
+  type: select
+  proxies: &id002
+  - 美国策略
+  - 节点选择
+  - 自动选择
+  - 故障转移
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 韩国策略
+  - 欧盟策略
+  - 冷门自选
+  - 全球手动
+  - 直接连接
+- name: 国外网页
+  type: select
+  proxies: &id001
+  - 节点选择
+  - 自动选择
+  - 故障转移
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 韩国策略
+  - 美国策略
+  - 欧盟策略
+  - 冷门自选
+  - 全球手动
+  - 直接连接
+- name: 国外流媒体
+  type: select
+  proxies: *id001
+- name: YouTube
+  type: select
+  proxies: *id001
+- name: Netflix
+  type: select
+  proxies: *id001
+- name: Disney+
+  type: select
+  proxies: *id001
+- name: 国际媒体
+  type: select
+  proxies: *id001
+- name: 新闻媒体
+  type: select
+  proxies: *id002
+- name: Telegram
+  type: select
+  proxies: *id001
+- name: Twitter
+  type: select
+  proxies: *id001
+- name: 社交平台
+  type: select
+  proxies: *id001
+- name: GitHub
+  type: select
+  proxies: *id001
+- name: 开发服务
+  type: select
+  proxies: *id001
+- name: 货币平台
+  type: select
+  proxies:
+  - 狮城策略
+  - 节点选择
+  - 自动选择
+  - 故障转移
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 韩国策略
+  - 美国策略
+  - 欧盟策略
+  - 冷门自选
+  - 全球手动
+  - 直接连接
+- name: Emby
+  type: select
+  proxies: *id001
+- name: 游戏平台
+  type: select
+  proxies: *id001
+- name: Steam下载
+  type: select
+  proxies: &id003
+  - 直接连接
+  - 节点选择
+  - 自动选择
+  - 故障转移
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 韩国策略
+  - 美国策略
+  - 欧盟策略
+  - 冷门自选
+  - 全球手动
+- name: 游戏联机
+  type: select
+  proxies: *id003
+- name: 下载服务
+  type: select
+  proxies: *id003
+- name: 微软服务
+  type: select
+  proxies: *id001
+- name: 苹果服务
+  type: select
+  proxies: *id001
+- name: 网络测试
+  type: select
+  proxies: *id001
+- name: 抖快书定位
+  type: select
+  proxies: *id003
+- name: UKwifi
+  type: select
+  proxies:
+  - 直接连接
+  - 欧盟策略
+  - 节点选择
+- name: 国内流量
+  type: select
+  proxies: *id003
+- name: 漏网之鱼
+  type: select
+  proxies: *id001
+rule-providers:
+  Tracking:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Tracking.mrs
+    path: ./rules/666OS/domain/Tracking.mrs
+    interval: 86400
+  Advertising:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Advertising.mrs
+    path: ./rules/666OS/domain/Advertising.mrs
+    interval: 86400
+  Direct:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Direct.mrs
+    path: ./rules/666OS/domain/Direct.mrs
+    interval: 86400
+  LocationDKS:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/LocationDKS.mrs
+    path: ./rules/666OS/domain/LocationDKS.mrs
+    interval: 86400
+  Private:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Private.mrs
+    path: ./rules/666OS/domain/Private.mrs
+    interval: 86400
+  Download:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Download.mrs
+    path: ./rules/666OS/domain/Download.mrs
+    interval: 86400
+  Speedtest:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Speedtest.mrs
+    path: ./rules/666OS/domain/Speedtest.mrs
+    interval: 86400
+  AI:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/AI.mrs
+    path: ./rules/666OS/domain/AI.mrs
+    interval: 86400
+  OpenAI:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/OpenAI.mrs
+    path: ./rules/666OS/domain/OpenAI.mrs
+    interval: 86400
+  Claude:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Claude.mrs
+    path: ./rules/666OS/domain/Claude.mrs
+    interval: 86400
+  Gemini:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Gemini.mrs
+    path: ./rules/666OS/domain/Gemini.mrs
+    interval: 86400
+  Telegram:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Telegram.mrs
+    path: ./rules/666OS/domain/Telegram.mrs
+    interval: 86400
+  Twitter:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Twitter.mrs
+    path: ./rules/666OS/domain/Twitter.mrs
+    interval: 86400
+  SocialMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/SocialMedia.mrs
+    path: ./rules/666OS/domain/SocialMedia.mrs
+    interval: 86400
+  NewsMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/NewsMedia.mrs
+    path: ./rules/666OS/domain/NewsMedia.mrs
+    interval: 86400
+  Games:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Games.mrs
+    path: ./rules/666OS/domain/Games.mrs
+    interval: 86400
+  Crypto:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Crypto.mrs
+    path: ./rules/666OS/domain/Crypto.mrs
+    interval: 86400
+  Netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Netflix.mrs
+    path: ./rules/666OS/domain/Netflix.mrs
+    interval: 86400
+  YouTube:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/YouTube.mrs
+    path: ./rules/666OS/domain/YouTube.mrs
+    interval: 86400
+  Disney:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Disney.mrs
+    path: ./rules/666OS/domain/Disney.mrs
+    interval: 86400
+  XPTV:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/XPTV.mrs
+    path: ./rules/666OS/domain/XPTV.mrs
+    interval: 86400
+  Emby:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Emby.mrs
+    path: ./rules/666OS/domain/Emby.mrs
+    interval: 86400
+  Streaming:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Streaming.mrs
+    path: ./rules/666OS/domain/Streaming.mrs
+    interval: 86400
+  AppleCN:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/AppleCN.mrs
+    path: ./rules/666OS/domain/AppleCN.mrs
+    interval: 86400
+  Apple:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Apple.mrs
+    path: ./rules/666OS/domain/Apple.mrs
+    interval: 86400
+  Google:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Google.mrs
+    path: ./rules/666OS/domain/Google.mrs
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Microsoft.mrs
+    path: ./rules/666OS/domain/Microsoft.mrs
+    interval: 86400
+  Facebook:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Facebook.mrs
+    path: ./rules/666OS/domain/Facebook.mrs
+    interval: 86400
+  GitHub:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/GitHub.mrs
+    path: ./rules/666OS/domain/GitHub.mrs
+    interval: 86400
+  Dev:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Dev.mrs
+    path: ./rules/666OS/domain/Dev.mrs
+    interval: 86400
+  OneDrive:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/OneDrive.mrs
+    path: ./rules/666OS/domain/OneDrive.mrs
+    interval: 86400
+  Spotify:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Spotify.mrs
+    path: ./rules/666OS/domain/Spotify.mrs
+    interval: 86400
+  Proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/Proxy.mrs
+    path: ./rules/666OS/domain/Proxy.mrs
+    interval: 86400
+  China:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/domain/China.mrs
+    path: ./rules/666OS/domain/China.mrs
+    interval: 86400
+  AdvertisingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Advertising.mrs
+    path: ./rules/666OS/ip/Advertising.mrs
+    interval: 86400
+  PrivateIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Private.mrs
+    path: ./rules/666OS/ip/Private.mrs
+    interval: 86400
+  AIIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/AI.mrs
+    path: ./rules/666OS/ip/AI.mrs
+    interval: 86400
+  TelegramIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Telegram.mrs
+    path: ./rules/666OS/ip/Telegram.mrs
+    interval: 86400
+  SocialMediaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/SocialMedia.mrs
+    path: ./rules/666OS/ip/SocialMedia.mrs
+    interval: 86400
+  XPTVIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/XPTV.mrs
+    path: ./rules/666OS/ip/XPTV.mrs
+    interval: 86400
+  EmbyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Emby.mrs
+    path: ./rules/666OS/ip/Emby.mrs
+    interval: 86400
+  NetflixIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Netflix.mrs
+    path: ./rules/666OS/ip/Netflix.mrs
+    interval: 86400
+  StreamingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Streaming.mrs
+    path: ./rules/666OS/ip/Streaming.mrs
+    interval: 86400
+  GoogleIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Google.mrs
+    path: ./rules/666OS/ip/Google.mrs
+    interval: 86400
+  FacebookIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Facebook.mrs
+    path: ./rules/666OS/ip/Facebook.mrs
+    interval: 86400
+  ProxyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/Proxy.mrs
+    path: ./rules/666OS/ip/Proxy.mrs
+    interval: 86400
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/666OS/ip/China.mrs
+    path: ./rules/666OS/ip/China.mrs
+    interval: 86400
+  private_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/private_domain.mrs
+    path: ./rules/metacubex/private_domain.mrs
+    interval: 86400
+  private_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/private_ip.mrs
+    path: ./rules/metacubex/private_ip.mrs
+    interval: 86400
+  cn_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/cn_domain.mrs
+    path: ./rules/metacubex/cn_domain.mrs
+    interval: 86400
+  cn_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/cn_ip.mrs
+    path: ./rules/metacubex/cn_ip.mrs
+    interval: 86400
+  geolocation_not_cn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/geolocation_not_cn.mrs
+    path: ./rules/metacubex/geolocation_not_cn.mrs
+    interval: 86400
+  category_ads_all:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/category_ads_all.mrs
+    path: ./rules/metacubex/category_ads_all.mrs
+    interval: 86400
+  openai_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/openai.mrs
+    path: ./rules/metacubex/openai_meta.mrs
+    interval: 86400
+  google_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/google.mrs
+    path: ./rules/metacubex/google_meta.mrs
+    interval: 86400
+  youtube_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/youtube.mrs
+    path: ./rules/metacubex/youtube_meta.mrs
+    interval: 86400
+  telegram_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/telegram.mrs
+    path: ./rules/metacubex/telegram_meta.mrs
+    interval: 86400
+  github_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/github.mrs
+    path: ./rules/metacubex/github_meta.mrs
+    interval: 86400
+  netflix_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/netflix.mrs
+    path: ./rules/metacubex/netflix_meta.mrs
+    interval: 86400
+  disney_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/disney.mrs
+    path: ./rules/metacubex/disney_meta.mrs
+    interval: 86400
+  steam_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/steam.mrs
+    path: ./rules/metacubex/steam_meta.mrs
+    interval: 86400
+  steam_cn_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/steam_cn.mrs
+    path: ./rules/metacubex/steam_cn_meta.mrs
+    interval: 86400
+  category_games_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/category_games.mrs
+    path: ./rules/metacubex/category_games_meta.mrs
+    interval: 86400
+  category_games_cn_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/category_games_cn.mrs
+    path: ./rules/metacubex/category_games_cn_meta.mrs
+    interval: 86400
+  apple_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/apple.mrs
+    path: ./rules/metacubex/apple_meta.mrs
+    interval: 86400
+  apple_cn_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/apple_cn.mrs
+    path: ./rules/metacubex/apple_cn_meta.mrs
+    interval: 86400
+  microsoft_meta:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/metacubex/microsoft.mrs
+    path: ./rules/metacubex/microsoft_meta.mrs
+    interval: 86400
+  AWAvenueAds:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/awavenue/AWAvenue-Ads-Rule-Clash.yaml
+    path: ./rules/AWAvenue-Ads-Rule-Clash.yaml
+    interval: 86400
+  fakeip_filter:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/Alex-yannian/Anuan_rules/release/rules/dustinwin/fakeip-filter.mrs
+    path: ./rules/fakeip-filter.mrs
+    interval: 86400
+rules:
+- RULE-SET,Tracking,REJECT
+- RULE-SET,Advertising,REJECT
+- RULE-SET,AWAvenueAds,REJECT
+- RULE-SET,category_ads_all,REJECT
+- RULE-SET,AdvertisingIP,REJECT,no-resolve
+- RULE-SET,Private,直接连接
+- RULE-SET,private_domain,直接连接
+- RULE-SET,Direct,直接连接
+- RULE-SET,PrivateIP,直接连接,no-resolve
+- RULE-SET,private_ip,直接连接,no-resolve
+- RULE-SET,AppleCN,直接连接
+- RULE-SET,apple_cn_meta,直接连接
+- RULE-SET,Download,下载服务
+- RULE-SET,steam_cn_meta,Steam下载
+- DOMAIN-SUFFIX,steamserver.net,Steam下载
+- DOMAIN-SUFFIX,steamstatic.com,Steam下载
+- DOMAIN-SUFFIX,steamcontent.com,Steam下载
+- DOMAIN-SUFFIX,steamusercontent-a.akamaihd.net,Steam下载
+- DOMAIN-KEYWORD,stun,游戏联机
+- AND,((NETWORK,UDP),(DST-PORT,3478-3481)),游戏联机
+- AND,((NETWORK,UDP),(DST-PORT,3659)),游戏联机
+- AND,((NETWORK,UDP),(DST-PORT,3074)),游戏联机
+- AND,((NETWORK,UDP),(DST-PORT,27015-27050)),游戏联机
+- AND,((NETWORK,UDP),(DST-PORT,5000-5500)),游戏联机
+- DOMAIN-SUFFIX,openai.com,AI服务
+- DOMAIN-SUFFIX,chatgpt.com,AI服务
+- DOMAIN-SUFFIX,chat.com,AI服务
+- DOMAIN-SUFFIX,ai.com,AI服务
+- DOMAIN-SUFFIX,sora.com,AI服务
+- DOMAIN-SUFFIX,oaistatic.com,AI服务
+- DOMAIN-SUFFIX,oaiusercontent.com,AI服务
+- DOMAIN-SUFFIX,oaistatsig.com,AI服务
+- DOMAIN-SUFFIX,chatgpt.livekit.cloud,AI服务
+- DOMAIN-SUFFIX,host.livekit.cloud,AI服务
+- DOMAIN-SUFFIX,turn.livekit.cloud,AI服务
+- DOMAIN-SUFFIX,claude.ai,AI服务
+- DOMAIN-SUFFIX,anthropic.com,AI服务
+- DOMAIN-SUFFIX,gemini.google.com,AI服务
+- DOMAIN-SUFFIX,makersuite.google.com,AI服务
+- DOMAIN-SUFFIX,bard.google.com,AI服务
+- DOMAIN-SUFFIX,arkoselabs.com,AI服务
+- DOMAIN-SUFFIX,intercom.io,AI服务
+- DOMAIN-SUFFIX,intercomcdn.com,AI服务
+- DOMAIN-SUFFIX,sentry.io,AI服务
+- DOMAIN-SUFFIX,browser-intake-datadoghq.com,AI服务
+- RULE-SET,AI,AI服务
+- RULE-SET,OpenAI,AI服务
+- RULE-SET,Claude,AI服务
+- RULE-SET,Gemini,AI服务
+- RULE-SET,openai_meta,AI服务
+- RULE-SET,AIIP,AI服务,no-resolve
+- DOMAIN-KEYWORD,speedtest,网络测试
+- RULE-SET,Speedtest,网络测试
+- RULE-SET,Twitter,Twitter
+- RULE-SET,Telegram,Telegram
+- RULE-SET,telegram_meta,Telegram
+- RULE-SET,TelegramIP,Telegram,no-resolve
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,Facebook,社交平台
+- RULE-SET,FacebookIP,社交平台,no-resolve
+- RULE-SET,NewsMedia,新闻媒体
+- RULE-SET,Crypto,货币平台
+- RULE-SET,XPTV,Emby
+- RULE-SET,XPTVIP,Emby,no-resolve
+- RULE-SET,Emby,Emby
+- RULE-SET,EmbyIP,Emby,no-resolve
+- RULE-SET,Netflix,Netflix
+- RULE-SET,netflix_meta,Netflix
+- RULE-SET,NetflixIP,Netflix,no-resolve
+- RULE-SET,YouTube,YouTube
+- RULE-SET,youtube_meta,YouTube
+- RULE-SET,Disney,Disney+
+- RULE-SET,disney_meta,Disney+
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,Apple,苹果服务
+- RULE-SET,apple_meta,苹果服务
+- RULE-SET,Google,谷歌服务
+- RULE-SET,google_meta,谷歌服务
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,GitHub,GitHub
+- RULE-SET,github_meta,GitHub
+- RULE-SET,Dev,开发服务
+- RULE-SET,OneDrive,微软服务
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,microsoft_meta,微软服务
+- DOMAIN-SUFFIX,steamcommunity.com,游戏平台
+- DOMAIN-SUFFIX,store.steampowered.com,游戏平台
+- DOMAIN-SUFFIX,help.steampowered.com,游戏平台
+- DOMAIN-SUFFIX,steam-chat.com,游戏平台
+- RULE-SET,steam_meta,游戏平台
+- RULE-SET,Games,游戏平台
+- RULE-SET,category_games_meta,游戏平台
+- RULE-SET,Proxy,国外网页
+- RULE-SET,geolocation_not_cn,国外网页
+- RULE-SET,ProxyIP,国外网页,no-resolve
+- RULE-SET,LocationDKS,抖快书定位
+- DOMAIN-SUFFIX,3gppnetwork.org,UKwifi
+- RULE-SET,category_games_cn_meta,直接连接
+- RULE-SET,China,国内流量
+- RULE-SET,cn_domain,国内流量
+- RULE-SET,ChinaIP,国内流量
+- RULE-SET,cn_ip,国内流量,no-resolve
+- GEOIP,CN,国内流量,no-resolve
+- MATCH,漏网之鱼
