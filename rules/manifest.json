@@ -1,0 +1,718 @@
+{
+  "generated_at": "2026-10-24T08:15:26.531196+00:00",
+  "count": 89,
+  "sources": [
+    {
+      "name": "666OS-domain-AI",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/AI.mrs",
+      "target": "rules/666OS/domain/AI.mrs",
+      "provider": "666OS/rules",
+      "bytes": 2729,
+      "sha256": "af0845bee4f2ab6421fa541577509c614f484cc42a9aaee8cbadba5d8ec5e46d"
+    },
+    {
+      "name": "666OS-domain-Advertising",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Advertising.mrs",
+      "target": "rules/666OS/domain/Advertising.mrs",
+      "provider": "666OS/rules",
+      "bytes": 7958,
+      "sha256": "6b9cc313a90e3e2b440c147c2e017ed9174d13c0ffdda93fe7fc6edbdc67f7f5"
+    },
+    {
+      "name": "666OS-domain-Apple",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Apple.mrs",
+      "target": "rules/666OS/domain/Apple.mrs",
+      "provider": "666OS/rules",
+      "bytes": 17998,
+      "sha256": "59669deb5c765e992f68fa5495db95608c3574ce75d3e2a5ff023744cdc0c775"
+    },
+    {
+      "name": "666OS-domain-AppleCN",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/AppleCN.mrs",
+      "target": "rules/666OS/domain/AppleCN.mrs",
+      "provider": "666OS/rules",
+      "bytes": 463,
+      "sha256": "c930b184236d10cc784a4e91cf4944dda8fa693cc6ffcbdd39b12075725c85a8"
+    },
+    {
+      "name": "666OS-domain-China",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/China.mrs",
+      "target": "rules/666OS/domain/China.mrs",
+      "provider": "666OS/rules",
+      "bytes": 535389,
+      "sha256": "b6c204e4903d48a0ca31a6dadabb41f788cc2375d1d6744616f0f891b7c488a8"
+    },
+    {
+      "name": "666OS-domain-Claude",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Claude.mrs",
+      "target": "rules/666OS/domain/Claude.mrs",
+      "provider": "666OS/rules",
+      "bytes": 97,
+      "sha256": "7d1f059002217151fadd29347d6c9f936e15f0ccc9ea2aecdca1b0055b6478dc"
+    },
+    {
+      "name": "666OS-domain-Crypto",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Crypto.mrs",
+      "target": "rules/666OS/domain/Crypto.mrs",
+      "provider": "666OS/rules",
+      "bytes": 4910,
+      "sha256": "68591032e5bd14cb9cfa181e09619367f6521dc8f1c5d26cd9254e4224fc0f74"
+    },
+    {
+      "name": "666OS-domain-Dev",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Dev.mrs",
+      "target": "rules/666OS/domain/Dev.mrs",
+      "provider": "666OS/rules",
+      "bytes": 6673,
+      "sha256": "94996f9ad6fd98f6624e16629b0ca3f875dca6fe4162004f14f5c9ac33852e0f"
+    },
+    {
+      "name": "666OS-domain-Direct",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Direct.mrs",
+      "target": "rules/666OS/domain/Direct.mrs",
+      "provider": "666OS/rules",
+      "bytes": 510,
+      "sha256": "705afb7af8cee7b504e97af75c56e6e3c63cbf4e38b7a1c6c71e76a371c82257"
+    },
+    {
+      "name": "666OS-domain-Disney",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Disney.mrs",
+      "target": "rules/666OS/domain/Disney.mrs",
+      "provider": "666OS/rules",
+      "bytes": 2508,
+      "sha256": "6c6da49c66ab6f8d0c84a969828315199e258cf5316b91aeb8c6bd9259898577"
+    },
+    {
+      "name": "666OS-domain-Download",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Download.mrs",
+      "target": "rules/666OS/domain/Download.mrs",
+      "provider": "666OS/rules",
+      "bytes": 1812,
+      "sha256": "3e006c67b3cc17cc913736292e62c266d80c947fa6c7b57e9aec4fb6bb7d50a7"
+    },
+    {
+      "name": "666OS-domain-Emby",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.mrs",
+      "target": "rules/666OS/domain/Emby.mrs",
+      "provider": "666OS/rules",
+      "bytes": 1993,
+      "sha256": "ee502421f3f8fdb2e4f73fe2c90419efdb610fc841d0dd9b646eb7006e796608"
+    },
+    {
+      "name": "666OS-domain-Facebook",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Facebook.mrs",
+      "target": "rules/666OS/domain/Facebook.mrs",
+      "provider": "666OS/rules",
+      "bytes": 4274,
+      "sha256": "6396b990e81b1263349dde17e8ce9962977f053a942cd1fb8ac058589f329f71"
+    },
+    {
+      "name": "666OS-domain-Games",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Games.mrs",
+      "target": "rules/666OS/domain/Games.mrs",
+      "provider": "666OS/rules",
+      "bytes": 10636,
+      "sha256": "a7c36fe5e9f323dd4ce13f3c11a62bc0218a08783578c9d01ab8a4f839b13145"
+    },
+    {
+      "name": "666OS-domain-Gemini",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Gemini.mrs",
+      "target": "rules/666OS/domain/Gemini.mrs",
+      "provider": "666OS/rules",
+      "bytes": 208,
+      "sha256": "7f76a0d949963ed15e6db9d86edad39c28dbdc353f5c2a4ceeedd7c0d825bc88"
+    },
+    {
+      "name": "666OS-domain-GitHub",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/GitHub.mrs",
+      "target": "rules/666OS/domain/GitHub.mrs",
+      "provider": "666OS/rules",
+      "bytes": 832,
+      "sha256": "1ff37cbbd49e7962ac781014c400e2b292d09148c96791536b92c184837edf60"
+    },
+    {
+      "name": "666OS-domain-Google",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Google.mrs",
+      "target": "rules/666OS/domain/Google.mrs",
+      "provider": "666OS/rules",
+      "bytes": 8927,
+      "sha256": "3f70be19243180b98ab65c9812db9af5d0327fe72a58480cb97e422f3e829271"
+    },
+    {
+      "name": "666OS-domain-LocationDKS",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/LocationDKS.mrs",
+      "target": "rules/666OS/domain/LocationDKS.mrs",
+      "provider": "666OS/rules",
+      "bytes": 133,
+      "sha256": "0f2cff4dd87688749f5747ae9e0e40dd6b1cd9e3735b59b76a31db74beeb6a08"
+    },
+    {
+      "name": "666OS-domain-Microsoft",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Microsoft.mrs",
+      "target": "rules/666OS/domain/Microsoft.mrs",
+      "provider": "666OS/rules",
+      "bytes": 7982,
+      "sha256": "7fba2e61ea45c179f3852ba2a07421fd728ada56b81ef5b6ffc96f0e11ea96e1"
+    },
+    {
+      "name": "666OS-domain-Netflix",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Netflix.mrs",
+      "target": "rules/666OS/domain/Netflix.mrs",
+      "provider": "666OS/rules",
+      "bytes": 292,
+      "sha256": "a6fea26ce2168e069fe865f269e86e5e031a51b5b3855fe297e1bc004a3170bd"
+    },
+    {
+      "name": "666OS-domain-NewsMedia",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/NewsMedia.mrs",
+      "target": "rules/666OS/domain/NewsMedia.mrs",
+      "provider": "666OS/rules",
+      "bytes": 14381,
+      "sha256": "4d70ab2fe7f0ef99ab7f05088e4b99b261c62374cd8ce416ca5c52092e1219eb"
+    },
+    {
+      "name": "666OS-domain-OneDrive",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/OneDrive.mrs",
+      "target": "rules/666OS/domain/OneDrive.mrs",
+      "provider": "666OS/rules",
+      "bytes": 187,
+      "sha256": "7db40f31c3da832e92775afc6ba01e3b5cbf8f8816a26807c66af77f9358243f"
+    },
+    {
+      "name": "666OS-domain-OpenAI",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/OpenAI.mrs",
+      "target": "rules/666OS/domain/OpenAI.mrs",
+      "provider": "666OS/rules",
+      "bytes": 533,
+      "sha256": "04c99d270621eb4d76287d30f023ee1dd4bb5001e976c08287be98fb87665c4e"
+    },
+    {
+      "name": "666OS-domain-Private",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Private.mrs",
+      "target": "rules/666OS/domain/Private.mrs",
+      "provider": "666OS/rules",
+      "bytes": 1319,
+      "sha256": "670e209f363de3877bfba68ff8de479a0e565186e69039b29414f8474b31e9d7"
+    },
+    {
+      "name": "666OS-domain-Proxy",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Proxy.mrs",
+      "target": "rules/666OS/domain/Proxy.mrs",
+      "provider": "666OS/rules",
+      "bytes": 199887,
+      "sha256": "f40edff0fb62646d786605ccfe2cea9c97e503e2e694cb737d074c9413114617"
+    },
+    {
+      "name": "666OS-domain-SocialMedia",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/SocialMedia.mrs",
+      "target": "rules/666OS/domain/SocialMedia.mrs",
+      "provider": "666OS/rules",
+      "bytes": 5753,
+      "sha256": "6276c8a87578d7a744279bae9ebacec38b375241d7863a6e2081cf4ee7fed0a2"
+    },
+    {
+      "name": "666OS-domain-Speedtest",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Speedtest.mrs",
+      "target": "rules/666OS/domain/Speedtest.mrs",
+      "provider": "666OS/rules",
+      "bytes": 40296,
+      "sha256": "b3377308d512a9864250c6f683fdf85c40f5b46b1da9d896b84c3664fb1619ac"
+    },
+    {
+      "name": "666OS-domain-Spotify",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Spotify.mrs",
+      "target": "rules/666OS/domain/Spotify.mrs",
+      "provider": "666OS/rules",
+      "bytes": 424,
+      "sha256": "7eea9d7fd6521c91f2a80ac2fc44a1d541385678c29cf0f7384d954bc23175bc"
+    },
+    {
+      "name": "666OS-domain-Streaming",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Streaming.mrs",
+      "target": "rules/666OS/domain/Streaming.mrs",
+      "provider": "666OS/rules",
+      "bytes": 6874,
+      "sha256": "f28114fe90f018b762a897b2942df2ad8cbdd9d7609914fce04749a9b80d4c10"
+    },
+    {
+      "name": "666OS-domain-Telegram",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Telegram.mrs",
+      "target": "rules/666OS/domain/Telegram.mrs",
+      "provider": "666OS/rules",
+      "bytes": 401,
+      "sha256": "3ae566e74d923f71b43f4048f8e62149c10d7e8f2f6a36301d8e27fe3eb6520b"
+    },
+    {
+      "name": "666OS-domain-Tracking",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Tracking.mrs",
+      "target": "rules/666OS/domain/Tracking.mrs",
+      "provider": "666OS/rules",
+      "bytes": 5465,
+      "sha256": "bfc2c1f50c92d3ce8211c82ab2dbb8e165d067d6abf04c474022d551697f2644"
+    },
+    {
+      "name": "666OS-domain-Twitter",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Twitter.mrs",
+      "target": "rules/666OS/domain/Twitter.mrs",
+      "provider": "666OS/rules",
+      "bytes": 324,
+      "sha256": "b287eac1d2a97da62e17cffddf55e0296665a289a41fba774fdba7397e6ea3f7"
+    },
+    {
+      "name": "666OS-domain-XPTV",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/XPTV.mrs",
+      "target": "rules/666OS/domain/XPTV.mrs",
+      "provider": "666OS/rules",
+      "bytes": 2972,
+      "sha256": "5b20c7eb9b87bb151942d70bd32a301b3e9dfd0f2018e2c34e53af33dc1b5e9b"
+    },
+    {
+      "name": "666OS-domain-YouTube",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/YouTube.mrs",
+      "target": "rules/666OS/domain/YouTube.mrs",
+      "provider": "666OS/rules",
+      "bytes": 1366,
+      "sha256": "e212b2ce9f39b30f4e2ab57da9ed0937673606bc56bb46e5d55ad7dd9af00aef"
+    },
+    {
+      "name": "666OS-ip-AI",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/AI.mrs",
+      "target": "rules/666OS/ip/AI.mrs",
+      "provider": "666OS/rules",
+      "bytes": 62,
+      "sha256": "1b23d1fd271003f7ece56f213b5e9ada122f77848a111a9d4bd6c1d7ea927bde"
+    },
+    {
+      "name": "666OS-ip-Advertising",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Advertising.mrs",
+      "target": "rules/666OS/ip/Advertising.mrs",
+      "provider": "666OS/rules",
+      "bytes": 60,
+      "sha256": "e7e0c783d3d4641428780ec00529af5421b6a837dd90fde83e5b22c60132210e"
+    },
+    {
+      "name": "666OS-ip-China",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/China.mrs",
+      "target": "rules/666OS/ip/China.mrs",
+      "provider": "666OS/rules",
+      "bytes": 38575,
+      "sha256": "4dd01c8cba4d5241edaafd78f587adbe4b83b3632cd1d1e49656abe684a2c41c"
+    },
+    {
+      "name": "666OS-ip-Emby",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Emby.mrs",
+      "target": "rules/666OS/ip/Emby.mrs",
+      "provider": "666OS/rules",
+      "bytes": 92,
+      "sha256": "9888497cda18a6afbd337622ed3f0a6422a24497fd62d35b6cb46c4195288a65"
+    },
+    {
+      "name": "666OS-ip-Facebook",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Facebook.mrs",
+      "target": "rules/666OS/ip/Facebook.mrs",
+      "provider": "666OS/rules",
+      "bytes": 533,
+      "sha256": "6f7798baf3b325ad2d56ddffae9126642bcab71e589a755e4c3783e4c85c6b12"
+    },
+    {
+      "name": "666OS-ip-Google",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Google.mrs",
+      "target": "rules/666OS/ip/Google.mrs",
+      "provider": "666OS/rules",
+      "bytes": 8337,
+      "sha256": "25208dc6f1bc79a834d0150dc670afd8d0db49797ba1e0631048238c5c323579"
+    },
+    {
+      "name": "666OS-ip-Netflix",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Netflix.mrs",
+      "target": "rules/666OS/ip/Netflix.mrs",
+      "provider": "666OS/rules",
+      "bytes": 364,
+      "sha256": "3fba174fdae1efe489d9b489126fa48e8a340f6d1f96b1478afad0c43781c14a"
+    },
+    {
+      "name": "666OS-ip-Private",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Private.mrs",
+      "target": "rules/666OS/ip/Private.mrs",
+      "provider": "666OS/rules",
+      "bytes": 157,
+      "sha256": "a4a5e01525e7ab9603b2254248ccb45620cedbd42a73e265eefe0cc2798ac378"
+    },
+    {
+      "name": "666OS-ip-Proxy",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Proxy.mrs",
+      "target": "rules/666OS/ip/Proxy.mrs",
+      "provider": "666OS/rules",
+      "bytes": 127,
+      "sha256": "4c3dde4026ab9d277a706d5a2ca7e2eca2c059aef6255ed268f6708c53dad745"
+    },
+    {
+      "name": "666OS-ip-SocialMedia",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/SocialMedia.mrs",
+      "target": "rules/666OS/ip/SocialMedia.mrs",
+      "provider": "666OS/rules",
+      "bytes": 145,
+      "sha256": "5d7e31f4ca32d63a27b69c94613032e0e3b5f5094c14765680c9e95160bc79dd"
+    },
+    {
+      "name": "666OS-ip-Streaming",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Streaming.mrs",
+      "target": "rules/666OS/ip/Streaming.mrs",
+      "provider": "666OS/rules",
+      "bytes": 113,
+      "sha256": "a8ce3ed4a4fbe89d06d642365976461986c4956844503a65d404cdeb3bf629b0"
+    },
+    {
+      "name": "666OS-ip-Telegram",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Telegram.mrs",
+      "target": "rules/666OS/ip/Telegram.mrs",
+      "provider": "666OS/rules",
+      "bytes": 170,
+      "sha256": "1c59d44f56fc80466ad4e8fedcb284b0c22ebbf0e57d9297c553af449a0e6c4d"
+    },
+    {
+      "name": "666OS-ip-XPTV",
+      "url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/XPTV.mrs",
+      "target": "rules/666OS/ip/XPTV.mrs",
+      "provider": "666OS/rules",
+      "bytes": 112,
+      "sha256": "a6f2ab63f93613c2f6b803148ffeedc5dcad9bd429d3abac3593b894ceea80bb"
+    },
+    {
+      "name": "awavenue-ads",
+      "url": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml",
+      "target": "rules/awavenue/AWAvenue-Ads-Rule-Clash.yaml",
+      "provider": "TG-Twilight/AWAvenue-Ads-Rule",
+      "bytes": 26332,
+      "sha256": "038711e9bf3052476497c5da4b363fa18cbdf76397c788753dd48dc1f6e0d681"
+    },
+    {
+      "name": "blackmatrix7-claude",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml",
+      "target": "rules/blackmatrix7/Claude.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 265,
+      "sha256": "ef21df39005b17dbd84aa65a47162b36fb5e72754cd32384146474ed488df482"
+    },
+    {
+      "name": "blackmatrix7-gemini",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml",
+      "target": "rules/blackmatrix7/Gemini.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 666,
+      "sha256": "d76e9822f72a69860b7d3086db61bbbef53014c57e3dc12472150c62a4f6434b"
+    },
+    {
+      "name": "blackmatrix7-github",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml",
+      "target": "rules/blackmatrix7/GitHub.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 1250,
+      "sha256": "a2641ce2f10857831b600623f97d354e6f8db7b20dff175c5313c2c46e0b6867"
+    },
+    {
+      "name": "blackmatrix7-netflix",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml",
+      "target": "rules/blackmatrix7/Netflix.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 1607,
+      "sha256": "cfb49b76fabc96887c7da7336ecea9066727c1489d25d677baa4f4e7a79a05f3"
+    },
+    {
+      "name": "blackmatrix7-openai",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml",
+      "target": "rules/blackmatrix7/OpenAI.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 1469,
+      "sha256": "cf66c50e7cfbe0aa0e9e249bfa8897d152ae35b38ab6db2936ef62860b7b61b4"
+    },
+    {
+      "name": "blackmatrix7-steam",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml",
+      "target": "rules/blackmatrix7/Steam.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 2724,
+      "sha256": "5b5096fafff8bc3c77560590d095ebfccefe708d47ea04fc36d1b052a7e4dd5f"
+    },
+    {
+      "name": "blackmatrix7-telegram",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml",
+      "target": "rules/blackmatrix7/Telegram.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 1590,
+      "sha256": "e78efc3f18069f1f1e3f88c15cd55f85424367b58ce8474af08c2fdf054704e0"
+    },
+    {
+      "name": "blackmatrix7-youtube",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml",
+      "target": "rules/blackmatrix7/YouTube.yaml",
+      "provider": "blackmatrix7/ios_rule_script",
+      "bytes": 5935,
+      "sha256": "2f84cc9d35c8559ebea4c43aa9b30bb43b36313d70684f23a359f1acabb879bb"
+    },
+    {
+      "name": "dustinwin-fakeip-filter",
+      "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs",
+      "target": "rules/dustinwin/fakeip-filter.mrs",
+      "provider": "DustinWin/ruleset_geodata",
+      "bytes": 5062,
+      "sha256": "21febacc3b70a7de5cf7bbb945157eab7c7500421e59baa3982c3f9ba9bdfa31"
+    },
+    {
+      "name": "loyalsoldier-applications",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt",
+      "target": "rules/loyalsoldier/applications.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 2821,
+      "sha256": "33bc8f07bacf74082fcb5f361eded1f6f9d3abcedcbe37ada2eb2ab4ae031732"
+    },
+    {
+      "name": "loyalsoldier-cncidr",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt",
+      "target": "rules/loyalsoldier/cncidr.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 219337,
+      "sha256": "ce5122e6bb0e0a3a0738b34d6aebfdf6b521ad22b689b46149ae19249bfca0b3"
+    },
+    {
+      "name": "loyalsoldier-direct",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt",
+      "target": "rules/loyalsoldier/direct.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 2278788,
+      "sha256": "a41b282280fcf0d5c2ee7dac24482b996bb271bbc32b6513343015db3d9c391f"
+    },
+    {
+      "name": "loyalsoldier-gfw",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt",
+      "target": "rules/loyalsoldier/gfw.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 95034,
+      "sha256": "b6a55a1d8672d8c263c45eec7aac0d30164f3107266786053f677e68724f11c6"
+    },
+    {
+      "name": "loyalsoldier-lancidr",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt",
+      "target": "rules/loyalsoldier/lancidr.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 532,
+      "sha256": "a5e833af11e66049c1b1e06dbb47aa3e02df2cea7fcdebf46b59fefb6087525a"
+    },
+    {
+      "name": "loyalsoldier-private",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt",
+      "target": "rules/loyalsoldier/private.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 3543,
+      "sha256": "49972ad557345dd1abe94a62892f06cbc5b4cef12bf8d7ac5beca454b5de9088"
+    },
+    {
+      "name": "loyalsoldier-proxy",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt",
+      "target": "rules/loyalsoldier/proxy.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 622491,
+      "sha256": "e3bf962e6baf6e9c98fe1d4db61720cd3aa42fa4afe47ece99c90c8cd7440cce"
+    },
+    {
+      "name": "loyalsoldier-reject",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt",
+      "target": "rules/loyalsoldier/reject.txt",
+      "provider": "Loyalsoldier/clash-rules",
+      "bytes": 5774467,
+      "sha256": "e4b108c870e011983263763fa2654d55b28dd73442f0ad8410ad07913d2f027f"
+    },
+    {
+      "name": "metacubex-apple",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs",
+      "target": "rules/metacubex/apple.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 17859,
+      "sha256": "ef067fccb6b336c650703e8126707690e038122598ec813b6edb4dfae8a51823"
+    },
+    {
+      "name": "metacubex-apple-cn",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs",
+      "target": "rules/metacubex/apple_cn.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 1338,
+      "sha256": "ec2428b5d5b56b235631305d605b4007bf7532d67fe264391587826b89f0de19"
+    },
+    {
+      "name": "metacubex-category-ads-all",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs",
+      "target": "rules/metacubex/category_ads_all.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 8203,
+      "sha256": "c20265cc7ec50b98555c904e302e6c6c92a2b225da7ad7f7a5b13a15bf775651"
+    },
+    {
+      "name": "metacubex-category-games",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games.mrs",
+      "target": "rules/metacubex/category_games.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 10713,
+      "sha256": "695cbbb04fa04bd12b19445a0e2fee80f32c40510126ae1f01e92d5f7bdc3a0f"
+    },
+    {
+      "name": "metacubex-category-games-cn",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn.mrs",
+      "target": "rules/metacubex/category_games_cn.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 574,
+      "sha256": "69277435faafabdc0836cf14901918302efff1f59b6eb107becc16931749c804"
+    },
+    {
+      "name": "metacubex-cn-domain",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs",
+      "target": "rules/metacubex/cn_domain.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 534542,
+      "sha256": "c7b555693b7caef65f5263dc409a3913bfdfdf6a25ea35e020d9a4d1315788ff"
+    },
+    {
+      "name": "metacubex-cn-ip",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs",
+      "target": "rules/metacubex/cn_ip.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 38553,
+      "sha256": "b54ba1445d7a328e290579e222b0d9b5783bbdc82a08f738cddea7f39e3940b4"
+    },
+    {
+      "name": "metacubex-disney",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs",
+      "target": "rules/metacubex/disney.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 2508,
+      "sha256": "6c6da49c66ab6f8d0c84a969828315199e258cf5316b91aeb8c6bd9259898577"
+    },
+    {
+      "name": "metacubex-asn-mmdb",
+      "url": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb",
+      "target": "rules/metacubex/geo/GeoLite2-ASN.mmdb",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 8981086,
+      "sha256": "4f480469576dba3e84b1f5c17313059982b70a62b8d35fb1ed225e39109b0531"
+    },
+    {
+      "name": "metacubex-geoip-dat",
+      "url": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat",
+      "target": "rules/metacubex/geo/geoip.dat",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 16570425,
+      "sha256": "a6271d3c96361d96156e6d3f7cf1550ef21b00d2f951deb772f464db91e89ac5"
+    },
+    {
+      "name": "metacubex-geoip-metadb",
+      "url": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb",
+      "target": "rules/metacubex/geo/geoip.metadb",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 8426776,
+      "sha256": "32f2edbb88f54257b07d6aef6144afa143c8f02a23ae0d6137ea3de680ac8846"
+    },
+    {
+      "name": "metacubex-geosite-dat",
+      "url": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat",
+      "target": "rules/metacubex/geo/geosite.dat",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 4311865,
+      "sha256": "610e2fa2b57b1232ba2220eeea45eb6e0bbf3675e19ac6ee2d29e8eb3e294b10"
+    },
+    {
+      "name": "metacubex-geolocation-not-cn",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs",
+      "target": "rules/metacubex/geolocation_not_cn.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 199055,
+      "sha256": "0780ed8d1fdd200ce90932e7d89e410d3c82974001adcec807ce11fa62a15ea7"
+    },
+    {
+      "name": "metacubex-github",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs",
+      "target": "rules/metacubex/github.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 832,
+      "sha256": "1ff37cbbd49e7962ac781014c400e2b292d09148c96791536b92c184837edf60"
+    },
+    {
+      "name": "metacubex-google",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs",
+      "target": "rules/metacubex/google.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 8927,
+      "sha256": "3f70be19243180b98ab65c9812db9af5d0327fe72a58480cb97e422f3e829271"
+    },
+    {
+      "name": "metacubex-microsoft",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs",
+      "target": "rules/metacubex/microsoft.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 7793,
+      "sha256": "61f2bad7f0cc8ce89eefc2be6b3eacac8efbd14716b2c9941d6ff8e85d5b797e"
+    },
+    {
+      "name": "metacubex-netflix",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs",
+      "target": "rules/metacubex/netflix.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 292,
+      "sha256": "a6fea26ce2168e069fe865f269e86e5e031a51b5b3855fe297e1bc004a3170bd"
+    },
+    {
+      "name": "metacubex-openai",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs",
+      "target": "rules/metacubex/openai.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 439,
+      "sha256": "842a11bfebd1078258407617ac14380529e1f3873e0e01a87d9dc64300a4ba63"
+    },
+    {
+      "name": "metacubex-private-domain",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs",
+      "target": "rules/metacubex/private_domain.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 781,
+      "sha256": "df452ab1bfb572f366f00001fa4525f16f137dc670aed2c60af0100dc397d3ec"
+    },
+    {
+      "name": "metacubex-private-ip",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs",
+      "target": "rules/metacubex/private_ip.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 236,
+      "sha256": "65027bee3076ec49024935c0eb9e4b85a447687db384d4b8d2763b6c2566ec1f"
+    },
+    {
+      "name": "metacubex-steam",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs",
+      "target": "rules/metacubex/steam.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 889,
+      "sha256": "edfe30eb85f9e6b2b480b0a251bf4f72ace6a1b0d63aff584cb8f69698c7ee48"
+    },
+    {
+      "name": "metacubex-steam-cn",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs",
+      "target": "rules/metacubex/steam_cn.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 346,
+      "sha256": "fd88dd091178deb2881b1f3be35d0bd0d0e92d912104e989b8b348e9d607e8d9"
+    },
+    {
+      "name": "metacubex-telegram",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs",
+      "target": "rules/metacubex/telegram.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 274,
+      "sha256": "ffa4d1d3e8649965e529c1c570d8add75a0d6f70aa8503ece8add841ce48c0e7"
+    },
+    {
+      "name": "metacubex-youtube",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs",
+      "target": "rules/metacubex/youtube.mrs",
+      "provider": "MetaCubeX/meta-rules-dat",
+      "bytes": 1366,
+      "sha256": "e212b2ce9f39b30f4e2ab57da9ed0937673606bc56bb46e5d55ad7dd9af00aef"
+    }
+  ]
+}
